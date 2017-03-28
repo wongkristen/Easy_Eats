@@ -1,0 +1,143 @@
+{
+  "Current_Tables" : {
+    "table1" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 4,
+      "orders" : [ {
+        "order_name" : "Hamburger",
+        "price" : 5.35,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "Drinks",
+        "price" : 2.99,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "Fries",
+        "price" : 3.99,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "IceCream",
+        "price" : 4.99,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "Jessica Smith"
+    },
+    "table2" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 3,
+      "orders" : [ {
+        "order_name" : "Hamburger",
+        "price" : 5.35,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "Drinks",
+        "price" : 2.99,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "Kevin Tran"
+    },
+    "table3" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 2,
+      "orders" : [ {
+        "order_name" : "Drinks",
+        "price" : 2.99,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "John Smith"
+    },
+    "table4" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 1,
+      "orders" : [ {
+        "order_name" : "Drinks",
+        "price" : 2.99,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "Hamburger",
+        "price" : 5.35,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "Drink",
+        "price" : 2.99,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "Jessica Smith"
+    },
+    "table5" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 1,
+      "orders" : [ {
+        "order_name" : "Hamburger",
+        "price" : 5.35,
+        "special_request" : "nothing..."
+      }, {
+        "order_name" : "IceCream",
+        "price" : 4.99,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "Kevin Tran"
+    },
+    "table6" : {
+      "bill_total" : 0.0,
+      "id" : "123123123",
+      "num_of_customer" : 1,
+      "orders" : [ {
+        "order_name" : "Hamburger",
+        "price" : 5.35,
+        "special_request" : "nothing..."
+      } ],
+      "reservation_name" : "name",
+      "status" : true,
+      "time_in" : "00:00",
+      "tip" : 0.0,
+      "waiter_assigned" : "John Smith"
+    }
+  },
+  "Host" : [ {
+    "id" : "47587685",
+    "name" : "Hey"
+  } ],
+  "Tables_Checkout" : [ {
+    "date" : "1/1/15"
+  } ],
+  "Waiter" : [ {
+    "id" : "12345678",
+    "name" : "John Smith",
+    "payment" : [ {
+      "date" : "1/2/13",
+      "earned" : 12.32
+    } ]
+  } ],
+  "Waitlist" : [ {
+    "name" : "name",
+    "party_size" : 0,
+    "phone" : "1(908)-930-8604",
+    "time_in" : "00:00"
+  } ]
+}

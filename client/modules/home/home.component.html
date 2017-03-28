@@ -1,0 +1,21 @@
+<div id="TableStatus" class="ui card ">
+    <div class="content">
+        <div class="header">Table <span style="color: #ca3433">Status</span></div>
+    </div>
+    <div class="content">
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed" *ngIf="TableStatus">
+            <div class="event" *ngFor="let o of TableStatus; let i = index;">
+                <div class="content">
+                    <div class="summary">
+                        <a>Table {{i + 1}}</a>  : <span style="color: #ca3433">{{o.status ? "Occupied" : "Vacant"}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="title-name">Easy<span class="two-letter-logo">Eats</span></div>
+<table-diagram (OpenModalEmit)="DiagramModalOpened($event)"></table-diagram>
+<custom-modal #myModal></custom-modal>

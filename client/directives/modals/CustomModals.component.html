@@ -1,0 +1,304 @@
+<style>
+    /*MODALS*/
+    .modal-heading{
+        content: "";
+        display: table;
+        clear: both;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .modal-heading > .left-side{
+        float: left;
+    }
+
+    .modal-heading > .right-side{
+        float: right;
+    }
+
+    .ui.modal{
+       /*position: absolute !important;*/
+    }
+    .content-price{
+        float: right;
+        bottom: 18px;
+        position: relative;
+        font-size: 30px;
+    }
+    .total-bar{
+        display: block;
+        text-align: right;
+        font-size: 30px;
+        color: #ca3433;
+    }
+    #AddFoodButton{
+        float: left;
+        top: 8px;
+        position: relative;
+    }
+    .tax-bar{
+        text-align: right;
+        color: #ca3433;
+    }
+
+
+
+    .food-card{
+        width: 49% !important;
+        margin: auto;
+    }
+
+    .fa-trash{
+        color: #ca3433;
+        position: absolute;
+        left: 28%;
+    }
+    .fa-trash:hover{
+        cursor: pointer;
+    }
+
+    .go-back-button{
+        float: right;
+    }
+
+    .dimmer-segment{
+        border: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+</style>
+
+<!--MAIN MODAL-->
+<div class="ui modal main-modal">
+    <i class="close icon"></i>
+    <div class="header" id="ModalHeader">
+        HELLO
+    </div>
+    <div class="content">
+        <!--<div class="ui medium image">-->
+            <!--<img src="/images/avatar/large/chris.jpg">-->
+        <!--</div>-->
+        <div class="description" *ngIf="CurrentTable">
+            <div class="modal-heading">
+
+                <div class="left-side">
+                    <i class="fa fa-user fa-2x"></i> Waiter : <span style="color: #ca3433;">{{CurrentTable.waiter_assigned}}</span>
+                </div>
+                <div class="right-side">
+                    Number Seated: {{CurrentTable.num_of_customer}}
+                </div>
+            </div>
+            <div class="ui relaxed divided list">
+                <div class="item" *ngFor="let order of CurrentTable.orders; let i = index">
+                    <!--<i class="large github middle aligned icon"></i>-->
+                    <!--<i class="fa fa-camera-retro fa-5x"></i>-->
+                    <div class="content">
+                        <a class="header">{{order.order_name}}</a><i class="fa fa-trash fa-2x" aria-hidden="true" (click)="DeleteFoodItem(i)"></i>
+                        <div class="description">Special Request : {{order.special_request}}</div>
+                        <div class="content-price">{{order.price}}</div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="ui positive button" (click)="OpenFoodModal()">
+                Add Food
+            </div>
+            <div class="tax-bar">Tax: {{tax}}</div>
+            <div class="total-bar">Total: {{total_price}}</div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui black button" id="AssignWaiterButton">
+            Assign Waiter
+        </div>
+        <div class="ui positive right labeled icon button">
+            Check Out
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+
+<!--WAITER MODAL-->
+<div class="ui modal waiter-modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Choose A Waiter/Waitress
+        <div class="ui black deny button go-back-button" (click)="GoBackToMainModal()">
+            Go Back
+        </div>
+    </div>
+    <div class="content">
+
+        <!--LOADER-->
+        <div class="ui segment dimmer-segment" style="position: initial;height: 100%;width:100%">
+            <div [ngClass]="WaiterLoader">
+            <!--<div [ngClass]="" class="ui disabled dimmer">-->
+                <div class="ui text loader">Loading</div>
+            </div>
+            <p></p>
+
+
+        <div class="ui link cards">
+            <div class="ui three column grid">
+                <div class="column">
+
+            <div class="ui fluid card">
+                <div class="image">
+                    <img src="assets/image/fake_profile1.png" (click)="ChooseWaiter('waiter1')">
+                </div>
+                <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+                    <span>
+        <i class="user icon"></i>
+        Sarah King
+      </span>
+                </div>
+            </div>
+                </div>
+                <div class="column">
+            <div class="ui fluid card">
+                <div class="image">
+                    <img src="assets/image/fake_profile2.jpg" (click)="ChooseWaiter('waiter2')">
+                </div>
+                <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+                    <span>
+        <i class="user icon"></i>
+        Kevin Tran
+      </span>
+                </div>
+            </div>
+                </div>
+                <div class="column">
+            <div class="ui fluid card">
+                <div class="image">
+                    <img src="assets/image/fake_profile3.jpg" (click)="ChooseWaiter('waiter3')">
+                </div>
+                <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+                    <span>
+        <i class="user icon"></i>
+        Miley Cyrus
+      </span>
+                </div>
+            </div>
+                </div>
+        </div>
+    </div>
+
+        </div>
+
+</div>
+</div>
+
+
+<!--Food MODAL-->
+<div class="ui modal food-modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Your Food Choices
+        <div class="ui black deny button go-back-button" (click)="GoBackToMainModal()">
+            Go Back
+        </div>
+    </div>
+    <div class="content">
+        <!--LOADER-->
+        <div class="ui segment dimmer-segment" style="position: initial;height: 100%;width:100%">
+            <div [ngClass]="FoodLoader">
+                <div class="ui text loader">Loading</div>
+            </div>
+
+
+
+        <!--CARD START FOOD MODAL-->
+        <div class="ui link cards">
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="ui fluid card food-card">
+                        <div class="image">
+                            <img src="assets/image/hamburger.jpg" (click)="AddFoodIntoTable('Hamburger')">
+                        </div>
+                        <div class="content">
+                            <div class="header">Hamburger</div>
+                        </div>
+                        <div class="extra content">
+                            <span>
+                <i class="user icon"></i>
+                5.35
+              </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui fluid card food-card">
+                        <div class="image">
+                            <img src="assets/image/softdrinks.jpg" (click)="AddFoodIntoTable('Drink')">
+                        </div>
+                        <div class="content">
+                            <div class="header">Soft Drink</div>
+                        </div>
+                        <div class="extra content">
+                            <span>
+                <i class="user icon"></i>
+                2.99
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="ui fluid card food-card">
+                        <div class="image">
+                            <img src="assets/image/fries.jpg" (click)="AddFoodIntoTable('Fries')">
+                        </div>
+                        <div class="content">
+                            <div class="header">Fries</div>
+                        </div>
+                        <div class="extra content">
+                            <span>
+                <i class="user icon"></i>
+                3.99
+              </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui fluid card food-card">
+                        <div class="image">
+                            <img src="assets/image/icecream.jpg" (click)="AddFoodIntoTable('IceCream')">
+                        </div>
+                        <div class="content">
+                            <div class="header">Ice Cream</div>
+                        </div>
+                        <div class="extra content">
+                            <span>
+                <i class="user icon"></i>
+                4.99
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+#svg-table{
+    position: relative;
+    top: 11rem;
+    left: 26rem;
+}
+
+.table:hover{
+    transform: scale(2);
+}
+
+#test1{
+    width:300px;
+}

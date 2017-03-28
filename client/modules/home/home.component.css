@@ -1,0 +1,23 @@
+#title-name{
+    font-family: 'Chewy', cursive !important;
+    font-weight: bolder;
+    font-size: 9rem;
+    text-shadow: -4px 4px #FFF, 4px 4px #FFF, -4px -4px #FFF, 4px -4px #FFF;
+    color: black;
+    position: relative;
+    top: 6rem;
+    left: 37rem;
+}
+
+.two-letter-logo{
+
+    background:transparent;
+    color: #CA3433;
+}
+
+#TableStatus{
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 11%;
+}
