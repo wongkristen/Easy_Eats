@@ -1,6 +1,7 @@
 !node_modules
 node_modules/*
 !node_modules/@types
+!node_modules/@angular
 .idea
 typings
 server/**/*.js
