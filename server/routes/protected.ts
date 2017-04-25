@@ -51,13 +51,10 @@ RestaurantDB.get("/getalldata", (request: Request, response: Response) => {
 
 //GET ALL TABLE INFORMATION
 RestaurantDB.get("/getalltable", (request: Request, response: Response) => {
-    firebase.database().ref().once("Current_Tables").then(function(x) {
+    firebase.database().ref("/Current_Tables").once("value").then(function(x) {
         response.json(x.val());
     });
 });
-
-
-
 
 //done done done done done done done done done done done done
 //GET SINGLE TABLE
@@ -68,8 +65,6 @@ RestaurantDB.get("/getsingletable", (request: Request, response: Response) => {
         response.json(x.val());
     });
 });
-
-
 
 //GET ALL OPEN DATA
 RestaurantDB.get("/getopentables", (request: Request, response: Response) => {

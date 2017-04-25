@@ -1,7 +1,6 @@
 #svg-table{
     position: relative;
     top: 11rem;
-    left: 26rem;
 }
 
 .table:hover{
@@ -10,4 +9,19 @@
 
 #test1{
     width:300px;
+}
+
+
+
+@media (min-width: 1024px) {
+    #svg-table{
+        left: 26rem;
+    }
+
+}
+
+@media (min-width: 955px) and (max-width: 1048px) {
+    #svg-table{
+        left: 11rem;
+    }
 }

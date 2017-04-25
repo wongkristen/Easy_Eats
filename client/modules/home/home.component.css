@@ -21,3 +21,17 @@
     left: 1%;
     width: 11%;
 }
+
+
+@media (min-width: 1024px) {
+    #title-name{
+        left: 37rem;
+    }
+
+}
+
+@media (min-width: 955px) and (max-width: 1048px) {
+    #title-name{
+        left: 22rem;
+    }
+}
