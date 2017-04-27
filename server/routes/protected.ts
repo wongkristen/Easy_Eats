@@ -3,6 +3,8 @@ import {FoodService} from "../../client/providers/Menu.server";
 let firebase = require('firebase');
 const RestaurantDB: Router = Router();
 
+let ProcessVar = process.env.NODE_ENV;
+
 var config = {
     apiKey: "AIzaSyCFvvrXp6BXXrvLbg4UC-DHgiN2TXzCem0",
     authDomain: "easyeat-a6bd1.firebaseapp.com",
@@ -60,7 +62,9 @@ RestaurantDB.get("/getalltable", (request: Request, response: Response) => {
 //GET SINGLE TABLE
 //getsingletable/:id"
 RestaurantDB.get("/getsingletable", (request: Request, response: Response) => {
-    console.log(request.query);
+    if(ProcessVar !== 'test'){
+        console.log(request.query);
+    };
     firebase.database().ref("Current_Tables/"+request.query.id).once("value").then(function(x) {
         response.json(x.val());
     });
@@ -95,15 +99,18 @@ RestaurantDB.get("/getopentables", (request: Request, response: Response) => {
 
 //This will be the update food method
 RestaurantDB.post("/updatefood", (request: Request, response: Response) => {
-    console.log(request.body);
+
     let table = request.body.table;
     let orders = request.body.orders;
-    console.log(orders);
+    if(ProcessVar !== "test"){
+        console.log(request.body);
+        console.log(orders);
+    };
     let OrderObj = {
         orders: orders
     };
     firebase.database().ref(`/Current_Tables/${table}`).update(OrderObj).then(function(x) {
-        response.json("Sucess");
+        response.json({table: table, orders: orders, message: "Successfully updated the table"});
     });
 });
 
@@ -144,12 +151,14 @@ RestaurantDB.post("/finalizebill", (request: Request, response: Response) => {
 RestaurantDB.post("/setwaiter", (request: Request, response: Response) => {
     let waiter_name = request.body.waiter;
     let table = request.body.table;
-    console.log(waiter_name);
+    if(ProcessVar !== 'test'){
+        console.log(waiter_name);
+    };
     let updateObj = {
         waiter_assigned: waiter_name
     };
     firebase.database().ref(`/Current_Tables/${table}`).update(updateObj).then(function(x) {
-        response.json("Success");
+        response.json({message: "Success", waiter_name: waiter_name, table: table});
     });
 });
 export { RestaurantDB , firebase}
