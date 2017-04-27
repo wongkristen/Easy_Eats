@@ -152,8 +152,7 @@ RestaurantDB.post("/setwaiter", (request: Request, response: Response) => {
         response.json("Success");
     });
 });
-
-export { RestaurantDB }
+export { RestaurantDB , firebase}
 
 
 
